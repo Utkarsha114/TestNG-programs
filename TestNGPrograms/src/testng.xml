@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="MyTestSuite">
+  <test name="FacebookTest">
+    <classes>
+      <class name="TestScripts.FBHomePage"/>
+      <class name="TestScripts.FacebookTc"/>
+    </classes>
+  </test> <!-- Test -->
+  
+  <test name="GoogleTc">
+  	<classes>
+  		<class name="TestScripts.GoogleTc"></class>
+  			<methods>
+  				<include name= "OpenPage" />
+  				<include name = "verifyPageTitle" />
+  				
+  				<!-- <exclude name = "verifyPageTitle" />   -->
+  			</methods>
+  	</classes>
+  </test>
+</suite> <!-- Suite -->

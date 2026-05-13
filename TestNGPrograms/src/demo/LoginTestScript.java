@@ -8,6 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
@@ -64,37 +65,16 @@ public class LoginTestScript {
 		al.accept();
   }
   
-//  @Test 
-//  public void logout() {
-  
-  JavascriptExecutor js = (JavascriptExecutor) driver;
-	js.executeScript("window.scrollBy(0,200)");
-	
-	
-//	  try {
-//			 Alert al =driver.switchTo().alert();
-//			 
-//			 System.out.println(al.getText());
-//			 al.accept();
-//		 } catch (Exception e) 
-//		 {
-//			 System.out.println(e);
-//		 }
-//		 
-//		 String expectedTitle = "GTPL Bank Manager HomePage";
-//		 
-//		 String actualTitle = driver.getTitle();
-//		 if(expectedTitle.equals(actualTitle)) {
-//			 System.out.println("Login Success");
-//		 }
-//		 
-//		 else {
-//			 System.out.println("Login Fail");
-//		 }
-//		 
-//		 WebElement logout = driver.findElement(By.cssSelector("a[href='Logout.php']"));
-//		 logout.click();
-//  }
+  @Test 
+  public void Logout() {
+	  Actions act = new Actions(driver);
+	  WebElement logoutbtn = driver.findElement(By.xpath("//a[text()='Log out']"));
+	  
+	  act.scrollToElement(logoutbtn).perform();
+	  
+	  JavascriptExecutor js = (JavascriptExecutor)driver;
+	  js.executeScript("arguments[0].click()", logoutbtn);
+  }
   
   @AfterMethod
   public void close() throws InterruptedException {
