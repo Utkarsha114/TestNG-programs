@@ -1,5 +1,7 @@
 package StepDefinition;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,9 +20,11 @@ public class LoginTestScript {
 	    // Write code here that turns the phrase above into concrete actions
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 		
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 	    
 	}
 
@@ -32,7 +36,7 @@ public class LoginTestScript {
 		WebElement username = driver.findElement(By.xpath("//input[@name='username']"));
 		username.sendKeys(uname);
 		
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		
 		
 		
@@ -45,7 +49,7 @@ public class LoginTestScript {
 		WebElement password = driver.findElement(By.xpath("//input[@name='password']"));
 		password.sendKeys(pwd);
 		
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		
 	}
 
@@ -63,11 +67,10 @@ public class LoginTestScript {
 	    // Write code here that turns the phrase above into concrete actions
 	   // throw new io.cucumber.java.PendingException();
 	    
-	    Thread.sleep(2000);
+	   // Thread.sleep(2000);
 	    System.out.println("Login Successful");
+	    
+	    //driver.quit();
 	}
 
-
-	
-	
 }
