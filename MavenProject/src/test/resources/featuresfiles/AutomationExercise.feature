@@ -4,7 +4,9 @@ Feature: Automation Exercise Login Feature
 	Given I am on Login Page
 	When I enter "<username>" and "<password>"
 	And I click on automationexercise login button
-	Then Validate result
+	Then Validate result 
+	#with "<Expected>"
+	And Logout from pplication if login successfull
 	
 	Examples:
 	|  username  			     | password     |

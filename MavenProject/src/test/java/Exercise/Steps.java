@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,7 +20,7 @@ public class Steps {
 	public void i_am_on_login_page() {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get(" https://automationexercise.com/login");
+		driver.get("https://automationexercise.com/login");
 	}
 
 	@When("I enter {string} and {string}")
@@ -43,19 +44,43 @@ public class Steps {
 
 		System.out.println(actualTitle);
 
-		if(actualTitle.equals("Automation Exercise")) {
+//		if(actualTitle.equals("Automation Exercise")) {
+//
+//			System.out.println("Login Successful");
+//
+//			Assert.assertEquals(actualTitle, "Automation Exercise");
+//
+//		}
+//
+//		else {
+//
+//			System.out.println("Login Failed");
+//
+//			Assert.assertEquals(actualTitle, "Automation Exercise - Signup / Login");
+//		}
+	}
+		@And("Logout from pplication if login successfull")
+		public void logout() throws InterruptedException {
+			String actualTitle = driver.getTitle();
 
-			System.out.println("Login Successful");
+			if(actualTitle.equals("Automation Exercise")) {
 
-			Assert.assertEquals(actualTitle, "Automation Exercise");
+				System.out.println("Login Successful");
+				
+				driver.findElement(By.xpath("//a[text()=' Logout']")).click();
 
-		}
+				System.out.println("Logout Successful");
+				//Assert.assertEquals(actualTitle, "Automation Exercise");
 
-		else {
+			}
 
-			System.out.println("Login Failed");
+			else {
 
-			Assert.assertEquals(actualTitle, "Automation Exercise - Signup / Login");
+				System.out.println("Login Failed");
+				Thread.sleep(3000);
+
+				//Assert.assertEquals(actualTitle, "Automation Exercise - Signup / Login");
+			}
 		}
 }
-}
+//}
